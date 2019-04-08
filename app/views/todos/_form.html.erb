@@ -1,0 +1,30 @@
+<%= form_with(model: todo, local: true) do |form| %>
+  <% if todo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+
+      <ul>
+      <% todo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_for(@todo, :method=> 'post', :html => {:id=>'form_id'} ) do |f| %>
+
+  <%= label_tag(:text, "Title:") %>
+  <%= f.text_field :text %></br>
+
+<%= f.label :isCompleted %>
+    <%= f.check_box :isCompleted %>
+  
+<%= label_tag(:project_id, "Project ID") %> 
+  <%= f.text_field :project_id %></br>
+
+
+<div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<% end %>

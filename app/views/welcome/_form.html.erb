@@ -1,0 +1,29 @@
+
+
+
+<%= bootstrap_form_with(model: @todo, :method=> 'post', :html => {:id=>'form_id'}) do |form| %>
+<% if @todo.errors.any? %>
+    <div id="error_explanation">
+        <h2>
+            <%= pluralize(@todo.errors.count, "error") %>
+            prohibited this article from being saved:
+        </h2>
+        <ul>
+            <% @todo.errors.full_messages.each do |msg| %>
+                <li>
+                    <%= msg %>
+                </li>
+            <% end %>
+        <ul>
+    </div>
+<% end %>
+    <%= form.text_field :text, placeholder: "Название задачи...", hide_label: true %></br>
+
+  <%= form.check_box :isCompleted, style: 'display:none', hide_label: true %>
+ <%= form.collection_select(:project_id, Project.all, :id, :title, hide_label: true) %>
+
+
+
+</br>
+
+<% end %>

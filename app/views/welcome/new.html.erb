@@ -1,0 +1,19 @@
+<h1>New Todo</h1>
+
+<%= form_for(@todo, :method=> 'post', :html => {:id=>'form_id'} ) do |f| %>
+  <%= label_tag(:text, "Title:") %>
+  <%= f.text_field :text %></br>
+
+<%= f.label :isCompleted %>
+    <%= f.check_box :isCompleted %>
+
+  <%= label_tag(:project_id, "Project ID") %> 
+  <%= f.collection_select(:project_id, Project.all, :id, :title)  %>
+
+  <%= link_to 'submit', '#', :onclick => "document.getElementById('form_id').submit()" %>
+
+    <%= f.submit %>
+<% end %>
+<%= render 'form', todo: @todo %>
+
+<%= link_to 'Back', todos_path %>

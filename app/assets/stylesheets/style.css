@@ -1,0 +1,11 @@
+.navbar-header {
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {float:none;}
+
+.row input:checked + span {
+    text-decoration: line-through
+}
+
